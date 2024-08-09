@@ -1,6 +1,6 @@
 import "./Banner.css"
 
-function Banner() {
+export const Banner = () => {
   // JSX
   return(
     // Because JSX files are essentially JavaScript code, the term "class"
@@ -11,5 +11,3 @@ function Banner() {
     </header>
   );
 }
-
-export default Banner;
