@@ -1,33 +1,28 @@
 import "./Form.css"
-import InputText from '../InputText';
+import InputText from "../InputText";
 import Dropdown from "../Dropdown";
 import Button from "../Button";
 import { useState } from "react";
 
-const Form = () => {
-  const teamList = [
-    'Programmers',
-    'Front-end',
-    'Data Science',
-    'Devops',
-    'UX & Design',
-    'Mobile',
-    'Innovation and management',
-  ]
-
+const Form = (props) => {
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
   const [image, setImage] = useState('')
   const [team, setTeam] = useState('')
 
-  const onSave = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    console.log("Form submitted with: ", name, role, image, team);
+    props.onUserCreate({
+      name,
+      role,
+      image,
+      team
+    })
   }
 
   return (
     <section className="form">
-      <form onSubmit={onSave}>
+      <form onSubmit={onSubmit}>
         <h2>Please fill in the following fields to create a card</h2>
         <InputText 
           label="Name"
@@ -51,7 +46,7 @@ const Form = () => {
         />
         <Dropdown 
           label="Team"
-          list={teamList}
+          list={props.teamNames}
           required={true}
           value={team}
           handlerOnChange={value => setTeam(value)}
