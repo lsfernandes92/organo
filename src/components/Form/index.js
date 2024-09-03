@@ -5,10 +5,10 @@ import Button from "../Button";
 import { useState } from "react";
 
 const Form = (props) => {
-  const [name, setName] = useState('')
-  const [role, setRole] = useState('')
-  const [image, setImage] = useState('')
-  const [team, setTeam] = useState('')
+  const [name, setName] = useState("")
+  const [role, setRole] = useState("")
+  const [image, setImage] = useState("")
+  const [team, setTeam] = useState("Programmers")
 
   const onSubmit = (event) => {
     event.preventDefault();
