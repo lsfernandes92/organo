@@ -5,8 +5,6 @@ import Team from "./components/Team";
 import Footer from "./components/Footer";
 
 function App() {
-  const [users, setUsers] = useState([])
-
   const teamList = [
     {
       name: "Programmers",
@@ -44,6 +42,17 @@ function App() {
       secondaryColor: "#FFEEDF",
     },
   ]
+
+  const initialTeamList = [
+    {
+      name: "Lucas Fernandes",
+      role: "Instructor",
+      image: "https://github.com/lsfernandes92.png",
+      team: "Programmers"
+    }
+  ]
+
+  const [users, setUsers] = useState(initialTeamList)
 
   const handleOnUserCreate = (user) => {
     setUsers([...users, user])

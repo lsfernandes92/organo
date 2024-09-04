@@ -11,7 +11,7 @@ const Footer = () => {
       <div class="footer-logo">
         <img src="/images/logo.png" alt="Logo from the Organo application"></img>
       </div>
-      <p>Desenvolvido por Alura</p>
+      <p>Desenvolvido por Lucas</p>
     </footer>
   );
 }

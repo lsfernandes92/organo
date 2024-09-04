@@ -7,7 +7,7 @@ export const Team = (props) => {
 
   return(
     (props.users.length > 0) &&
-    <section className="team" style={{"--team-bg-color": secondaryColor }}>
+    <section className="team" style={{"--team-bg-color": secondaryColor, "backgroundImage": "url(/images/bg.png)" }}>
       <h3 style={{"--team-border-color": primaryColor}}>{props.name}</h3>
       <div className="users">
         {props.users.map(user => 
