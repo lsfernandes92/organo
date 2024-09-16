@@ -7,10 +7,6 @@ export const Team = (props) => {
   const secondaryColor = hexToRgba(primaryColor, '0.5'); ;
   const bgImage = "url(/images/bg.png)";
 
-  const handlerOnDelete = () => {
-    console.log("deleting usercard...");
-  }
-
   return(
     (props.users.length > 0) &&
     <section className="team" style={{"--team-bg-color": secondaryColor, "backgroundImage": bgImage }}>
@@ -25,12 +21,13 @@ export const Team = (props) => {
         {props.users.map(user => {
           return(
             <UserCard
-              key={user.name}
+              key={user.id}
+              id={user.id}
               bgColor={primaryColor}
               image={user.image}
               name={user.name}
               role={user.role}
-              onDelete={handlerOnDelete}
+              onDelete={props.onDelete}
             />
           )
         })}
