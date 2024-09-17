@@ -1,6 +1,7 @@
-import "./InputText.css"
+import "./Input.css"
 
-const InputText = (props) => {
+const Input = (props) => {
+  const type = props.type || "text"
   const placeHolderWithReticences = `${props.placeholder}...`
 
   const handlerOnChange = (event) => {
@@ -8,9 +9,10 @@ const InputText = (props) => {
   }
 
   return(
-    <div className="input-text">
+    <div className="input">
       <label>{props.label}</label>
-      <input 
+      <input
+        type={props.type}
         value={props.value}
         required={props.required}
         placeholder={placeHolderWithReticences}
@@ -20,4 +22,4 @@ const InputText = (props) => {
   );
 }
 
-export default InputText;
+export default Input;

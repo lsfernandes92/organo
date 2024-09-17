@@ -1,5 +1,5 @@
 import "./Form.css"
-import InputText from "../InputText";
+import Input from "../Input";
 import Dropdown from "../Dropdown";
 import Button from "../Button";
 import { useState } from "react";
@@ -40,21 +40,21 @@ const Form = (props) => {
     <section className="forms">
       <form className="user-form" onSubmit={onSubmitUser}>
         <h2>Please fill in the following fields to create a card</h2>
-        <InputText 
+        <Input 
           label="Name"
           required={true}
           placeholder="Type your name here"
           value={name}
           handlerOnChange={value => setName(value)}
         />
-        <InputText 
+        <Input 
           label="Role"
           required={true}
           placeholder="Type your position here"
           value={role}
           handlerOnChange={value => setRole(value)}
         />
-        <InputText
+        <Input
           label="Image"
           placeholder="Type here your image address"
           value={image}
@@ -73,15 +73,16 @@ const Form = (props) => {
       </form>
       <form className="team-form" onSubmit={onSubmitTeam}>
         <h2>Please fill in the following fields to create a team</h2>
-        <InputText 
+        <Input 
           label="Name"
           required
           placeholder="Type the team name"
           value={teamName}
           handlerOnChange={value => setTeamName(value)}
         />
-        <InputText 
+        <Input 
           label="Color"
+          type="color"
           required
           placeholder="Type the team color"
           value={teamColor}
