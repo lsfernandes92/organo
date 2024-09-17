@@ -9,8 +9,10 @@ const Form = (props) => {
   const [role, setRole] = useState("")
   const [image, setImage] = useState("")
   const [team, setTeam] = useState("Programmers")
+  const [teamName, setTeamName] = useState("")
+  const [teamColor, setTeamColor] = useState("")
 
-  const onSubmit = (event) => {
+  const onSubmitUser = (event) => {
     event.preventDefault();
     props.onUserCreate({
       name,
@@ -24,9 +26,19 @@ const Form = (props) => {
     setTeam("Programmers")
   }
 
+  const onSubmitTeam = (event) => {
+    event.preventDefault();
+    props.onTeamCreate({
+      name: teamName,
+      color: teamColor
+    })
+    setTeamName("")
+    setTeamColor("")
+  }
+
   return (
-    <section className="form">
-      <form onSubmit={onSubmit}>
+    <section className="forms">
+      <form className="user-form" onSubmit={onSubmitUser}>
         <h2>Please fill in the following fields to create a card</h2>
         <InputText 
           label="Name"
@@ -57,6 +69,26 @@ const Form = (props) => {
         />
         <Button>
           Create card
+        </Button>
+      </form>
+      <form className="team-form" onSubmit={onSubmitTeam}>
+        <h2>Please fill in the following fields to create a team</h2>
+        <InputText 
+          label="Name"
+          required
+          placeholder="Type the team name"
+          value={teamName}
+          handlerOnChange={value => setTeamName(value)}
+        />
+        <InputText 
+          label="Color"
+          required
+          placeholder="Type the team color"
+          value={teamColor}
+          handlerOnChange={value => setTeamColor(value)}
+        />
+        <Button>
+          Create team
         </Button>
       </form>
     </section>

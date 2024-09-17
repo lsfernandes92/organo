@@ -44,7 +44,7 @@ function App() {
     },
   ])
 
-  const initialTeamList = [
+  const initialUserList = [
     {
       id: uuidv4(),
       name: "Lucas Fernandes",
@@ -54,12 +54,16 @@ function App() {
     }
   ]
 
-  const [users, setUsers] = useState(initialTeamList)
+  const [users, setUsers] = useState(initialUserList)
 
   const handlerOnUserCreate = (user) => {
     setUsers([...users, user])
   }
 
+  const handlerOnTeamCreate = (team) => {
+    setTeamList([...teamList, {...team, id: uuidv4() }])
+  }
+  
   const handlerOnChangeColor = (color, id) => {
     setTeamList(teamList.map(team => {
       if(team.id === id) {
@@ -76,7 +80,11 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Form teamNames={teamList.map(team => team.name)} onUserCreate={user => handlerOnUserCreate(user)}/>
+      <Form 
+        teamNames={teamList.map(team => team.name)} 
+        onUserCreate={user => handlerOnUserCreate(user)}
+        onTeamCreate={team => handlerOnTeamCreate(team)}
+      />
       {teamList.map(team =>
         <Team 
           key={team.name}
