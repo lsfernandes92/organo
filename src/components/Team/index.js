@@ -27,6 +27,8 @@ export const Team = (props) => {
               image={user.image}
               name={user.name}
               role={user.role}
+              fav={user.fav}
+              onFav={props.onFav}
               onDelete={props.onDelete}
             />
           )

@@ -47,6 +47,7 @@ function App() {
   const initialUserList = [
     {
       id: uuidv4(),
+      fav: false,
       name: "Lucas Fernandes",
       role: "Instructor",
       image: "https://github.com/lsfernandes92.png",
@@ -77,6 +78,15 @@ function App() {
     setUsers(users.filter(user => user.id !== id))
   }
 
+  const handlerOnFav = (id) => {
+    setUsers(users.map(user => {
+      if (user.id === id) {
+        user.fav = !user.fav;
+      }
+      return user;
+    }))
+  }
+
   return (
     <div className="App">
       <Banner />
@@ -94,6 +104,7 @@ function App() {
           users={users.filter(user => user.team === team.name)}
           onChangeColor={handlerOnChangeColor}
           onDelete={handlerOnDelete}
+          onFav={handlerOnFav}
         />
       )}
       <Footer />
