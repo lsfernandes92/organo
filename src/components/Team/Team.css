@@ -24,3 +24,9 @@
   top: 20px;
   right: 50px;
 }
+
+.delete-team {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+}

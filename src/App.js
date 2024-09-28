@@ -51,14 +51,14 @@ function App() {
       name: "Lucas Fernandes",
       role: "Instructor",
       image: "https://github.com/lsfernandes92.png",
-      team: "Programmers"
+      team: teamList[0]
     }
   ]
 
   const [users, setUsers] = useState(initialUserList)
 
   const handlerOnUserCreate = (user) => {
-    setUsers([...users, user])
+    setUsers([...users, {...user, team: teamList.find(team => team.name === user.team)}])
   }
 
   const handlerOnTeamCreate = (team) => {
@@ -74,8 +74,12 @@ function App() {
     }))
   }
 
-  const handlerOnDelete = (id) => {
+  const handlerOnDeleteUserCard = (id) => {
     setUsers(users.filter(user => user.id !== id))
+  }
+
+  const handlerOnDeleteTeam = (id) => {
+    setUsers(users.filter(user => user.team.id !== id))
   }
 
   const handlerOnFav = (id) => {
@@ -96,14 +100,15 @@ function App() {
         onTeamCreate={team => handlerOnTeamCreate(team)}
       />
       {teamList.map(team =>
-        <Team 
+        <Team
           key={team.name}
           id={team.id}
           name={team.name}
           color={team.color}
-          users={users.filter(user => user.team === team.name)}
+          users={users.filter(user => user.team.name === team.name)}
           onChangeColor={handlerOnChangeColor}
-          onDelete={handlerOnDelete}
+          onDeleteUserCard={handlerOnDeleteUserCard}
+          onDeleteTeam={handlerOnDeleteTeam}
           onFav={handlerOnFav}
         />
       )}

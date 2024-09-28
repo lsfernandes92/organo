@@ -1,5 +1,6 @@
 import UserCard from "../UserCard";
 import hexToRgba from 'hex-to-rgba';
+import { IoMdCloseCircle } from "react-icons/io";
 import "./Team.css"
 
 export const Team = (props) => {
@@ -16,6 +17,7 @@ export const Team = (props) => {
         value={primaryColor}
         className="input-color"
       />
+      <IoMdCloseCircle className="delete-team" size={25} onClick={() => props.onDeleteTeam(props.id)} />
       <h3 style={{"--team-border-color": primaryColor}}>{props.name}</h3>
       <div className="users">
         {props.users.map(user => {
@@ -29,7 +31,7 @@ export const Team = (props) => {
               role={user.role}
               fav={user.fav}
               onFav={props.onFav}
-              onDelete={props.onDelete}
+              onDelete={props.onDeleteUserCard}
             />
           )
         })}
