@@ -8,7 +8,7 @@ const Form = (props) => {
   const [name, setName] = useState("")
   const [role, setRole] = useState("")
   const [image, setImage] = useState("")
-  const [team, setTeam] = useState("Programmers")
+  const [team, setTeam] = useState("")
   const [teamName, setTeamName] = useState("")
   const [teamColor, setTeamColor] = useState("")
 

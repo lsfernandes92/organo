@@ -12,7 +12,7 @@ const Input = (props) => {
     <div className="input">
       <label>{props.label}</label>
       <input
-        type={props.type}
+        type={type}
         value={props.value}
         required={props.required}
         placeholder={placeHolderWithReticences}
