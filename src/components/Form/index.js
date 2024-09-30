@@ -37,6 +37,7 @@ const Form = (props) => {
   }
 
   return (
+    (props.formVisibility) && 
     <section className="forms">
       <form className="user-form" onSubmit={onSubmitUser}>
         <h2>Please fill in the following fields to create a card</h2>

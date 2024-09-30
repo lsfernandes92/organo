@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Banner from "./components/Banner";
 import Form from "./components/Form";
+import ToggleButton from "./components/ToggleButton";
 import Team from "./components/Team";
 import Footer from "./components/Footer";
 import { v4 as uuidv4 } from 'uuid';
@@ -56,6 +57,7 @@ function App() {
   ]
 
   const [users, setUsers] = useState(initialUserList)
+  const [formVisibility, setFormVisibility] = useState(true)
 
   const handlerOnUserCreate = (user) => {
     setUsers([...users, {...user, team: teamList.find(team => team.name === user.team)}])
@@ -91,14 +93,21 @@ function App() {
     }))
   }
 
+  const handlerFormVisibility = () => {
+    setFormVisibility(!formVisibility)
+  }
+
   return (
     <div className="App">
       <Banner />
       <Form 
-        teamNames={teamList.map(team => team.name)} 
+        teamNames={teamList.map(team => team.name)}
+        formVisibility={formVisibility}
+        onVisibilityChange={handlerFormVisibility}
         onUserCreate={user => handlerOnUserCreate(user)}
         onTeamCreate={team => handlerOnTeamCreate(team)}
       />
+      <ToggleButton onClick={handlerFormVisibility} />
       {teamList.map(team =>
         <Team
           key={team.name}

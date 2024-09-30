@@ -1,0 +1,9 @@
+.toggle-form-button {
+  display: flex;
+  justify-content: center;
+}
+
+.toggle-form-button img {
+  width: 64px;
+  margin: 80px;
+}
